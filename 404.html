@@ -4,12 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>提示</title>
+    <title>404</title>
 </head>
 <script>
     function go() {
-        var now_url=window.location.href;
-        var real_url = now_url.replace("https://site-871.github.io/","http://scp-wiki-cn.wikidot.com/")
+        var now_url = window.location.href;
+        if (now_url.indexOf("scp-pku")) {
+            var real_url = now_url.replace("https://site-871.github.io/", "https://scpsandboxcn.wikidot.com/")
+            real_url = real_url.replace("https://site-871.gitee.io/scp/", "https://scpsandboxcn.wikidot.com/")
+        }
+        else {
+            var real_url = now_url.replace("https://site-871.github.io/", "http://scp-wiki-cn.wikidot.com/")
+            real_url = real_url.replace("https://site-871.gitee.io/scp/", "http://scp-wiki-cn.wikidot.com/")
+        }
+
         window.location.replace(real_url)
     }
 </script>
@@ -21,17 +29,27 @@
         <script>
             var url = window.location.href;
             // alert(url);
-            document.write(url.replace("https://site-871.github.io/","http://scp-wiki-cn.wikidot.com/"))
+            var now_url = window.location.href;
+            if (now_url.indexOf("scp-pku")) {
+                var real_url = now_url.replace("https://site-871.github.io/", "https://scpsandboxcn.wikidot.com/")
+                real_url = real_url.replace("https://site-871.gitee.io/scp/", "https://scpsandboxcn.wikidot.com/")
+            }
+            else {
+                var real_url = now_url.replace("https://site-871.github.io/", "http://scp-wiki-cn.wikidot.com/")
+                real_url = real_url.replace("https://site-871.gitee.io/scp/", "http://scp-wiki-cn.wikidot.com/")
+            }
+
+            document.write(real_url)
         </script>
         <p>如果没有成功跳转请点击按钮:</p>
         <button type="submit" class="button1" onclick="go()">GO</button>
         <script>
-            var go_continue=true;
+            var go_continue = true;
             function judge_and_go() {
                 // alert("judge");
                 var ua = navigator.userAgent.toLocaleLowerCase();
                 var is_tencent = false
-                if (ua.indexOf(' qq') > -1 && ua.indexOf('mqqbrowser')>-1) {
+                if (ua.indexOf(' qq') > -1 && ua.indexOf('mqqbrowser') > -1) {
                     //qq内置浏览器
                     // alert("Q!");
                     is_tencent = true;
@@ -53,14 +71,14 @@
                 }
 
                 else {
-                    go_continue=false;
+                    go_continue = false;
                     go();
                     return;
                 }
             }
-            var inter=setInterval(function(){
+            var inter = setInterval(function () {
                 judge_and_go();
-                if(go_continue==false){
+                if (go_continue == false) {
                     clearInterval(inter);
                 }
             }, 1000);
