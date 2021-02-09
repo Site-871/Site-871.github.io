@@ -9,7 +9,7 @@
 <script>
     function go() {
         var now_url = window.location.href;
-        if (now_url.indexOf("scp-pku")) {
+        if (now_url.indexOf("scp-pku") > -1) {
             var real_url = now_url.replace("https://site-871.github.io/", "https://scpsandboxcn.wikidot.com/")
             real_url = real_url.replace("https://site-871.gitee.io/scp/", "https://scpsandboxcn.wikidot.com/")
         }
@@ -30,7 +30,7 @@
             var url = window.location.href;
             // alert(url);
             var now_url = window.location.href;
-            if (now_url.indexOf("scp-pku")) {
+            if (now_url.indexOf("scp-pku") > -1) {
                 var real_url = now_url.replace("https://site-871.github.io/", "https://scpsandboxcn.wikidot.com/")
                 real_url = real_url.replace("https://site-871.gitee.io/scp/", "https://scpsandboxcn.wikidot.com/")
             }
