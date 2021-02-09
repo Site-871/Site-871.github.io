@@ -33,8 +33,9 @@
                 }
                 var ua = navigator.userAgent.toLocaleLowerCase();
                 var is_tencent = false
-                if (ua.indexOf(' qq') > -1 && ua.indexOf('mqqbrowser') < 0) {
+                if (ua.indexOf(' qq') > -1 && ua.indexOf('mqqbrowser')>-1) {
                     //qq内置浏览器
+                    alert("Q!");
                     is_tencent = true;
                     return;
                 }
