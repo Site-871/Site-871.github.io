@@ -24,7 +24,8 @@
         <p id="url"></p>
         <button type="submit" class="button1" onclick="go()">GO</button>
         <script>
-            var ua=navigator.userAgent.toLocaleLowerCase();
+            function judge_and_go(){
+                var ua=navigator.userAgent.toLocaleLowerCase();
             var is_tencent=false
             if(ua.indexOf(' qq')>-1 && ua.indexOf('mqqbrowser') <0){
               //qq内置浏览器
@@ -46,7 +47,9 @@
 
           }
             else{
-            setTimeout(go(), 10000);}
+            go()
+            }
+        setInterval(judge_and_go,10000);
         </script>
     </center>
     
