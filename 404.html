@@ -24,7 +24,29 @@
         <p id="url"></p>
         <button type="submit" class="button1" onclick="go()">GO</button>
         <script>
-            setTimeout(go(), 10000);
+            var ua=navigator.userAgent.toLocaleLowerCase();
+            var is_tencent=false
+            if(ua.indexOf(' qq')>-1 && ua.indexOf('mqqbrowser') <0){
+              //qq内置浏览器
+              is_tencent = true;
+              return;
+          }
+          if(ua.indexOf('mqqbrowser')> -1 && ua.indexOf(" qq")<0){
+              //qq浏览器
+              is_tencent = true;
+              return;
+          }
+          if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+             //微信浏览器
+             is_tencent = true;
+             return;
+          }
+
+          if(is_tencent){
+
+          }
+            else{
+            setTimeout(go(), 10000);}
         </script>
     </center>
     
