@@ -8,7 +8,8 @@
 </head>
 <script>
     function go() {
-        var real_url = "https://scp-wiki-cn.wikidot.com/scp-738";
+        var now_url=window.location.href;
+        var real_url = now_url.replace("https://site-871.github.io/","http://scp-wiki-cn.wikidot.com/")
         window.location.replace(real_url)
     }
 </script>
@@ -20,7 +21,7 @@
         <script>
             var url = window.location.href;
             // alert(url);
-            document.write(url)
+            document.write(url.replace("https://site-871.github.io/","http://scp-wiki-cn.wikidot.com/"))
         </script>
         <p id="url"></p>
         <button type="submit" class="button1" onclick="go()">GO</button>
@@ -28,14 +29,11 @@
             var go_continue=true;
             function judge_and_go() {
                 // alert("judge");
-                if(go_continue==false){
-                    return;
-                }
                 var ua = navigator.userAgent.toLocaleLowerCase();
                 var is_tencent = false
                 if (ua.indexOf(' qq') > -1 && ua.indexOf('mqqbrowser')>-1) {
                     //qq内置浏览器
-//                     alert("Q!");
+                    // alert("Q!");
                     is_tencent = true;
                     return;
                 }
@@ -49,7 +47,7 @@
                     is_tencent = true;
                     return;
                 }
-                // alert('666');
+                // alert('jueged!');
                 if (is_tencent) {
 
                 }
@@ -60,7 +58,12 @@
                     return;
                 }
             }
-            setInterval(judge_and_go, 1000);
+            var inter=setInterval(function(){
+                judge_and_go();
+                if(go_continue==false){
+                    clearInterval(inter);
+                }
+            }, 1000);
         </script>
     </center>
 
