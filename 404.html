@@ -8,6 +8,7 @@
 </head>
 <script>
     function go() {
+        // alert("judge");
         var now_url = window.location.href;
         if (now_url.indexOf("scp-pku") > -1) {
             var real_url = now_url.replace("https://site-871.github.io/", "https://scpsandboxcn.wikidot.com/")
@@ -19,14 +20,50 @@
         }
 
         window.location.replace(real_url)
+        // window.location.replace('https://site-871.github.io')
     }
+    var go_continue = true;
+    function judge_and_go() {
+        // alert("judge");
+        // console.log()
+        var ua = navigator.userAgent.toLocaleLowerCase();
+        console.log(ua);
+        var is_tencent = false
+        if (ua.indexOf(' qq') > -1 && ua.indexOf('mqqbrowser') > -1) {
+            //qq内置浏览器
+            // alert("Q!");
+            is_tencent = true;
+            return;
+        }
+        if (ua.indexOf('mqqbrowser') > -1 && ua.indexOf(" qq") < 0) {
+            //qq浏览器
+            is_tencent = true;
+            return;
+        }
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            //微信浏览器
+            is_tencent = true;
+            return;
+        }
+        // alert('jueged!');
+        if (is_tencent) {
+
+        }
+
+        else {
+            go_continue = false;
+            go();
+            return;
+        }
+    }
+    judge_and_go();
 </script>
 
 <body>
     </style>
     <center>
         <p>请使用外置浏览器打开此网址,用外置浏览器打开后会自动跳转至此网址:</p>
-        <script>
+        <!-- <script>
             var url = window.location.href;
             // alert(url);
             var now_url = window.location.href;
@@ -40,10 +77,10 @@
             }
 
             document.write(real_url)
-        </script>
+        </script> -->
         <p>如果没有成功跳转请点击按钮:</p>
         <button type="submit" class="button1" onclick="go()">GO</button>
-        <script>
+        <!-- <script>
             var go_continue = true;
             function judge_and_go() {
                 // alert("judge");
@@ -82,7 +119,7 @@
                     clearInterval(inter);
                 }
             }, 1000);
-        </script>
+        </script> -->
     </center>
 
 
